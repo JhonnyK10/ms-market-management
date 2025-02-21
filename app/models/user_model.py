@@ -28,3 +28,21 @@ class User:
         cls.users.append(new_user)
         
         return cls.users
+    
+    @classmethod
+    def update(cls, user_id, data):
+        for user in cls.users:
+            if user["id"] == user_id:
+                user["name"] = data["name"]
+                user["email"] = data["email"]
+                return user
+        return None
+    
+    @classmethod
+    def delete(cls, user_id):
+        for user in cls.users:
+            if user["id"] == user_id:
+                cls.users.remove(user)
+                return cls.users
+        return None
+    
